@@ -1,0 +1,45 @@
+canvas {
+  border: 4px solid #BA90C6;
+}
+
+#videoAction, #detectionAction{
+ width: 250px;
+  height: 50px;
+  background: #BA90C6;
+  color: #2F0F5D;
+  font-size: 18px;
+  font-weight: bold;
+
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0;
+  background-color: #F5F3C1;
+}
+
+#contenedor-video-canvas {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#contenedor-video-canvas video {
+  width: 20%;
+
+}
+
+#contenedor-video-canvas canvas {
+  width: 20%;
+}
+
+
+body{
+  background-color: #C0DBEA;
+}
+
+
+

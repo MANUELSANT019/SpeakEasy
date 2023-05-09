@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <script src="https://unpkg.com/ml5@0.7.1/dist/ml5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser-arcade-physics.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+    <link rel="stylesheet" href="stylesdetect.css">
+    <link rel="stylesheet" href="style.css">
+
+
+
+</head>
+
+<body>        
+    <script>
+        class Example extends Phaser.Scene {
+            constructor() {
+                super();
+            }
+
+            preload() {
+                this.load.atlas('soldier', 'assets/animations/soldier.png', 'assets/animations/soldier.json');               
+                this.load.image('fg', 'assets/pics/plano.png');
+            }
+
+            create() {
+                this.add.image(400, 300, 'fg');
+                const rambo = this.add.sprite(500, 500, 'soldier');
+
+                //  The following animation is created directly on the 'rambo' Sprite.
+
+                //  It cannot be used by any other sprite, and the key ('walk') is never added to
+                //  the global Animation Manager, as it's kept local to this Sprite.
+                rambo.anims.create({
+                    key: 'walk',
+                    frames: this.anims.generateFrameNames('soldier', { prefix: 'soldier_3_walk_', start: 1, end: 8 }),
+                    frameRate: 12,
+                    repeat: -1
+                });
+
+                //  Now let's create a new 'walk' animation that is stored in the global Animation Manager:
+                this.anims.create({
+                    key: 'walk',
+                    frames: this.anims.generateFrameNames('soldier', { prefix: 'Soldier_2_walk_', start: 1, end: 8 }),
+                    frameRate: 12,
+                    repeat: -1
+                });
+
+
+                this.anims.create({
+                    key: 'shoot',
+                    frames: this.anims.generateFrameNames('soldier', { prefix: 'Soldier_2_shot_front_', start: 1, end: 8 }),
+                    frameRate: 12,
+                    repeat: -1
+                });
+
+                //  Because the rambo Sprite has its own 'walk' animation, it will play it:
+                rambo.play('walk');
+
+                this.soldado = rambo
+
+                //  However, this Sprite will play the global 'walk' animation, because it doesn't have its own:
+                this.add.sprite(200, 500, 'soldier')
+                    .play('walk');
+
+                const commands = {
+                  //aca van los comandos de voz
+                };
+
+                if (annyang) {
+                    annyang.addCommands(commands);
+                    annyang.start();
+                }
+
+            }
+        }
+
+        const config = {
+            type: Phaser.AUTO,
+            parent: 'phaser-example',
+            width: 820,
+            height: 600,
+            scene: Example           
+        };
+
+        const game = new Phaser.Game(config);
+
+    </script>
+
+ 
+    <div class="container">
+       <div class="content">       
+        <button id="videoAction" onclick="toggleVideo()">Desactivar Video</button>
+        <button id="detectionAction" onclick="toggleDetecting()">Iniciar deteccion</button>
+       </div>
+    </div>
+    <script src="app.js"></script>
+    <div id="contenedor-video-canvas"></div>
+
+
+</body>
+
+</html>
