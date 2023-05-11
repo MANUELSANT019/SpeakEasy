@@ -14,9 +14,9 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(270, 270).parent('contenedor-video-canvas');
+  createCanvas(250, 250).parent('contenedor-video-canvas');
   video = createCapture(VIDEO);
-  video.size(300, 300).parent('contenedor-video-canvas');
+  video.size(200, 200).parent('contenedor-video-canvas');
 
 }
 
@@ -56,6 +56,8 @@ console.log(detections[0].confidence);
 
 if(detections[0].confidence>0.7){
   console.log("Usted es una persona");
+  const msg = new SpeechSynthesisUtterance("Hay alguien en la puerta");
+  window.speechSynthesis.speak(msg);
 }else{
   console.log("no estoy seguro de que sea una persona");
 }
