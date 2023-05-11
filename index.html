@@ -15,8 +15,8 @@
 
 </head>
 
-<body>  
-       
+<body>
+
     <script>
         class Example extends Phaser.Scene {
             constructor() {
@@ -24,29 +24,430 @@
             }
 
             preload() {
-                this.load.atlas('soldier', 'assets/animations/soldier.png', 'assets/animations/soldier.json');                             
+                this.load.atlas('soldier', 'assets/animations/soldier.png', 'assets/animations/soldier.json');
                 this.load.image('fg', 'assets/pics/plano.png');
-                this.load.image('bombillo', 'assets/animations/on.png')
-                this.load.image('bombillo2', 'assets/animations/Off.png')
-
+                this.load.image('bombillo', 'assets/animations/on.png')  //habitacion1 luz
+                this.load.image('bombillo2', 'assets/animations/Off.png') //habitacion1 luz 
+                this.load.image('Candadoverde', 'assets/animations/verde.png')  //habitacion1 puerta
+                this.load.image('Candadorojo', 'assets/animations/rojo.png')//habitacion1 puerta
 
             }
 
             create() {
                 this.add.image(400, 300, 'fg');
-                const bombillo = this.add.image(670, 230, 'bombillo');
-                bombillo.setScale(0.33);
-                bombillo.setVisible(false); // Oculta la imagen inicialmente
-                const bombillo2 = this.add.image(670, 230, 'bombillo2');
-                bombillo2.setScale(0.33);
-                bombillo2.setVisible(false); // Oculta la imagen inicialmente
-               
 
+                //habitacion1 luz
+                const bombillohab1on = this.add.image(630, 190, 'bombillo');
+                bombillohab1on.setScale(0.22);
+                bombillohab1on.setVisible(false); // Oculta la imagen inicialmente
+                const bombillohab1off = this.add.image(630, 190, 'bombillo2');
+                bombillohab1off.setScale(0.22);
+                bombillohab1off.setVisible(false); // Oculta la imagen inicialmente
+                //Habitacion 1 puerta
+                const PuertaHab1Open = this.add.image(720, 190, 'Candadoverde');
+                PuertaHab1Open.setScale(0.11);
+                PuertaHab1Open.setVisible(false); // Oculta la imagen inicialmente
+                const PuertaHab1Close = this.add.image(720, 190, 'Candadorojo');
+                PuertaHab1Close.setScale(0.11);
+                PuertaHab1Close.setVisible(false); // Oculta la imagen inicialmente
+
+
+                //Habitacion 2 
+
+                //Habitacion2 luz 
+                const bombillohab2on = this.add.image(630, 420, 'bombillo');
+                bombillohab2on.setScale(0.22);
+                bombillohab2on.setVisible(false); // Oculta la imagen inicialmente
+                const bombillohab2off = this.add.image(630, 420, 'bombillo2');
+                bombillohab2off.setScale(0.22);
+                bombillohab2off.setVisible(false); // Oculta la imagen inicialmente
+                //Habitacion 2 puerta
+                const PuertaHab2Open = this.add.image(720, 420, 'Candadoverde');
+                PuertaHab2Open.setScale(0.11);
+                PuertaHab2Open.setVisible(false); // Oculta la imagen inicialmente
+                const PuertaHab2Close = this.add.image(720, 420, 'Candadorojo');
+                PuertaHab2Close.setScale(0.11);
+                PuertaHab2Close.setVisible(false); // Oculta la imagen inicialmente
+
+                //Habitacion 3
+
+                //Habitacion3 luz 
+                const bombillohab3on = this.add.image(370, 420, 'bombillo');
+                bombillohab3on.setScale(0.22);
+                bombillohab3on.setVisible(false); // Oculta la imagen inicialmente
+                const bombillohab3off = this.add.image(370, 420, 'bombillo2');
+                bombillohab3off.setScale(0.22);
+                bombillohab3off.setVisible(false); // Oculta la imagen inicialmente
+                //Habitacion 1 puerta
+                const PuertaHab3Open = this.add.image(465, 420, 'Candadoverde');
+                PuertaHab3Open.setScale(0.11);
+                PuertaHab3Open.setVisible(false); // Oculta la imagen inicialmente
+                const PuertaHab3Close = this.add.image(465, 420, 'Candadorojo');
+                PuertaHab3Close.setScale(0.11);
+                PuertaHab3Close.setVisible(false); // Oculta la imagen inicialmente
+
+
+
+                //Baño 1
+
+                //Baño 1 luz 
+                const bombillobaño1on = this.add.image(480, 200, 'bombillo');
+                bombillobaño1on.setScale(0.18);
+                bombillobaño1on.setVisible(false); // Oculta la imagen inicialmente
+                const bombillobaño1off = this.add.image(480, 200, 'bombillo2');
+                bombillobaño1off.setScale(0.22);
+                bombillobaño1off.setVisible(false); // Oculta la imagen inicialmente
+                //Baño 1 puerta
+                const Puertabaño1open = this.add.image(550, 200, 'Candadoverde');
+                Puertabaño1open.setScale(0.10);
+                Puertabaño1open.setVisible(false); // Oculta la imagen inicialmente
+                const Puertabaño1close = this.add.image(550, 200, 'Candadorojo');
+                Puertabaño1close.setScale(0.10);
+                Puertabaño1close.setVisible(false); // Oculta la imagen inicialmente
+
+
+                 //Baño 2
+
+                //Baño 2 luz 
+                const bombillobaño2on = this.add.image(530, 520, 'bombillo');
+                bombillobaño2on.setScale(0.18);
+                bombillobaño2on.setVisible(false); // Oculta la imagen inicialmente
+                const bombillobaño2off = this.add.image(530, 520, 'bombillo2');
+                bombillobaño2off.setScale(0.22);
+                bombillobaño2off.setVisible(false); // Oculta la imagen inicialmente
+                //Baño 2 puerta
+                const Puertabaño2open = this.add.image(530, 450, 'Candadoverde');
+                Puertabaño2open.setScale(0.10);
+                Puertabaño2open.setVisible(false); // Oculta la imagen inicialmente
+                const Puertabaño2close = this.add.image(530, 450, 'Candadorojo');
+                Puertabaño2close.setScale(0.10);
+                Puertabaño2close.setVisible(false); // Oculta la imagen inicialmente
+
+
+
+                //Cocina
+
+                //Cocina luz 
+                const bombillacocinaon = this.add.image(350, 240, 'bombillo');
+                bombillacocinaon.setScale(0.18);
+                bombillacocinaon.setVisible(false); // Oculta la imagen inicialmente
+                const bombillacocinaoff = this.add.image(350, 240, 'bombillo2');
+                bombillacocinaoff.setScale(0.22);
+                bombillacocinaoff.setVisible(false); // Oculta la imagen inicialmente
+                //Baño 2 puerta
+                const puertacocinaopen = this.add.image(420, 240, 'Candadoverde');
+                puertacocinaopen.setScale(0.10);
+                puertacocinaopen.setVisible(false); // Oculta la imagen inicialmente
+                const puertacocinaclose = this.add.image(420, 240, 'Candadorojo');
+                puertacocinaclose.setScale(0.10);
+                puertacocinaclose.setVisible(false); // Oculta la imagen inicialmente
+
+
+
+
+                 //Lavadero
+
+                //Lavadero
+                const bombillalavaderoOn = this.add.image(480, 100, 'bombillo');
+                bombillalavaderoOn.setScale(0.18);
+                bombillalavaderoOn.setVisible(false); // Oculta la imagen inicialmente
+                const bombillalavaderoOff = this.add.image(480, 100, 'bombillo2');
+                bombillalavaderoOff.setScale(0.22);
+                bombillalavaderoOff.setVisible(false); // Oculta la imagen inicialmente
+                //Lavadero
+                const puertalavaderoOpen = this.add.image(550, 100, 'Candadoverde');
+                puertalavaderoOpen.setScale(0.10);
+                puertalavaderoOpen.setVisible(false); // Oculta la imagen inicialmente
+                const puertalavaderoclose = this.add.image(550, 100, 'Candadorojo');
+                puertalavaderoclose.setScale(0.10);
+                puertalavaderoclose.setVisible(false); // Oculta la imagen inicialmente
+
+
+
+
+                //pruebas teclado
+
+                // Bombillo hab1
+                // this.input.keyboard.on('keydown-P', function () {
+                //    bombillohab1on.setVisible(!bombillohab1on.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'P'
+                //    bombillohab1off.setVisible(false); // Oculta el bombillo apagado al presionar la tecla 'P'
+                // });
+
+                //  this.input.keyboard.on('keydown-O', function () {
+                //      bombillohab1off.setVisible(!bombillohab1off.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'O'
+                //       bombillohab1on.setVisible(false); // Oculta el bombillo encendido al presionar la tecla 'O'
+                //   });
+
+                // Puerta hab1
+                //  this.input.keyboard.on('keydown-I', function () {
+                //     PuertaHab1Open.setVisible(!PuertaHab1Open.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'I'
+                //     PuertaHab1Close.setVisible(false); // Oculta el candado rojo al presionar la tecla 'I'
+                // });
+
+                // this.input.keyboard.on('keydown-U', function () {
+                //    PuertaHab1Close.setVisible(!PuertaHab1Close.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'U'
+                //   PuertaHab1Open.setVisible(false); // Oculta el candado verde al presionar la tecla 'U'
+                //});
+
+
+
+                //Bombillo hab2
+                // this.input.keyboard.on('keydown-P', function () {
+                //      bombillohab2on.setVisible(!bombillohab2on.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'P'
+                //      bombillohab2off.setVisible(false); // Oculta el bombillo apagado al presionar la tecla 'P'
+                //  });
+
+                //   this.input.keyboard.on('keydown-O', function () {
+                //     bombillohab2off.setVisible(!bombillohab2off.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'O'
+                //      bombillohab2on.setVisible(false); // Oculta el bombillo encendido al presionar la tecla 'O'
+                //  });
+
+                // Puerta hab2
+                //  this.input.keyboard.on('keydown-I', function () {
+                //      PuertaHab2Open.setVisible(!PuertaHab2Open.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'I'
+                //      PuertaHab2Close.setVisible(false); // Oculta el candado rojo al presionar la tecla 'I'
+                //  });
+
+                //   this.input.keyboard.on('keydown-U', function () {
+                //      PuertaHab2Close.setVisible(!PuertaHab2Close.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'U'
+                //      PuertaHab2Open.setVisible(false); // Oculta el candado verde al presionar la tecla 'U'
+                //  });
+
+
+
+                //Bombillo hab3
+              //  this.input.keyboard.on('keydown-P', function () {
+              //      bombillohab3on.setVisible(!bombillohab3on.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'P'
+               //     bombillohab3off.setVisible(false); // Oculta el bombillo apagado al presionar la tecla 'P'
+               // });
+
+              //  this.input.keyboard.on('keydown-O', function () {
+               //     bombillohab3off.setVisible(!bombillohab3off.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'O'
+               //     bombillohab3on.setVisible(false); // Oculta el bombillo encendido al presionar la tecla 'O'
+              //  });
+
+                // Puerta hab2
+               // this.input.keyboard.on('keydown-I', function () {
+              //      PuertaHab3Open.setVisible(!PuertaHab3Open.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'I'
+               //     PuertaHab3Close.setVisible(false); // Oculta el candado rojo al presionar la tecla 'I'
+              //  });
+
+              //  this.input.keyboard.on('keydown-U', function () {
+               //     PuertaHab3Close.setVisible(!PuertaHab3Close.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'U'
+                //    PuertaHab3Open.setVisible(false); // Oculta el candado verde al presionar la tecla 'U'
+               // });
+
+
+                //Bombillo Baño1
+               // this.input.keyboard.on('keydown-P', function () {
+                //    bombillobaño1on.setVisible(!bombillobaño1on.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'P'
+                //    bombillobaño1off.setVisible(false); // Oculta el bombillo apagado al presionar la tecla 'P'
+               // });
+
+              //  this.input.keyboard.on('keydown-O', function () {
+             //      bombillobaño1off.setVisible(!bombillobaño1off.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'O'
+              //      bombillobaño1on.setVisible(false); // Oculta el bombillo encendido al presionar la tecla 'O'
+              //  });
+
+                // Puerta Baño2
+              //  this.input.keyboard.on('keydown-I', function () {
+               //    Puertabaño1open.setVisible(!Puertabaño1open.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'I'
+               //  Puertabaño1close.setVisible(false); // Oculta el candado rojo al presionar la tecla 'I'
+               // });
+
+               // this.input.keyboard.on('keydown-U', function () {
+               //     Puertabaño1close.setVisible(!Puertabaño1close.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'U'
+                //    Puertabaño1open.setVisible(false); // Oculta el candado verde al presionar la tecla 'U'
+               // });
+
+
+
+                //Cocina luz
+               // this.input.keyboard.on('keydown-P', function () {
+               //     bombillacocinaon.setVisible(!bombillacocinaon.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'P'
+               //     bombillacocinaoff.setVisible(false); // Oculta el bombillo apagado al presionar la tecla 'P'
+               // });
+
+               // this.input.keyboard.on('keydown-O', function () {
+               //     bombillacocinaoff.setVisible(!bombillacocinaoff.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'O'
+               //     bombillacocinaon.setVisible(false); // Oculta el bombillo encendido al presionar la tecla 'O'
+               // });
+
+                // Puerta cocina
+               // this.input.keyboard.on('keydown-I', function () {
+               //     puertacocinaopen.setVisible(!puertacocinaopen.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'I'
+               //     puertacocinaclose.setVisible(false); // Oculta el candado rojo al presionar la tecla 'I'
+               // });
+
+               // this.input.keyboard.on('keydown-U', function () {
+               //     puertacocinaclose.setVisible(!puertacocinaclose.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'U'
+                 //   puertacocinaopen.setVisible(false); // Oculta el candado verde al presionar la tecla 'U'
+             //   });
+
+
+
+
+
+                //Lavadero luz
+                this.input.keyboard.on('keydown-P', function () {
+                    bombillalavaderoOn.setVisible(!bombillalavaderoOn.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'P'
+                    bombillalavaderoOff.setVisible(false); // Oculta el bombillo apagado al presionar la tecla 'P'
+                });
+
+                this.input.keyboard.on('keydown-O', function () {
+                    bombillalavaderoOff.setVisible(!bombillalavaderoOff.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'O'
+                    bombillalavaderoOn.setVisible(false); // Oculta el bombillo encendido al presionar la tecla 'O'
+                });
+
+                // Lavadero cocina
+                this.input.keyboard.on('keydown-I', function () {
+                    puertalavaderoOpen.setVisible(!puertalavaderoOpen.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'I'
+                    puertalavaderoclose.setVisible(false); // Oculta el candado rojo al presionar la tecla 'I'
+                });
+
+                this.input.keyboard.on('keydown-U', function () {
+                    puertalavaderoclose.setVisible(!puertalavaderoclose.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'U'
+                    puertalavaderoOpen.setVisible(false); // Oculta el candado verde al presionar la tecla 'U'
+                });
+
+
+
+
+
+
+                //voz
                 const commands = {
-                  //aca van los comandos de voz
-                  'on bedroom': function () {
-                        bombillo.setVisible(true);
+                    //aca van los comandos de voz
+                    //Habitacion1
+
+                    //Habitacion1 luz
+                    'on bedroom one': function () {
+                        bombillohab1on.setVisible(true);
+                    },
+
+                    'off bedroom one': function () {
+                        bombillohab1on.setVisible(false)
+                        bombillohab1off.setVisible(true);
+                    },
+                    //Habitacion1 puerta
+                    'open door bedroom one': function () {
+                        PuertaHab1Open.setVisible(true);
+                    },
+
+                    'close door bedroom one': function () {
+                        PuertaHab1Open.setVisible(false)
+                        PuertaHab1Close.setVisible(true);
+                    },
+
+                    //Habitacion2
+
+                    //Habitacion2 luz
+                    'on bedroom two': function () {
+                        bombillohab2on.setVisible(true);
+                    },
+
+                    'off bedroom two': function () {
+                        bombillohab2on.setVisible(false)
+                        bombillohab2off.setVisible(true);
+                    },
+                    //Habitacion2 puerta
+                    'open door bedroom two': function () {
+                        PuertaHab2Open.setVisible(true);
+                    },
+
+                    'close door bedroom two': function () {
+                        PuertaHab2Open.setVisible(false)
+                        PuertaHab2Close.setVisible(true);
+                    },
+
+                    //Habitacion3
+
+                    //Habitacion3 luz
+                    'on bedroom three': function () {
+                        bombillohab2on.setVisible(true);
+                    },
+
+                    'off bedroom three': function () {
+                        bombillohab2on.setVisible(false)
+                        bombillohab2off.setVisible(true);
+                    },
+                    //Habitacion3 puerta
+                    'open door bedroom three': function () {
+                        PuertaHab2Open.setVisible(true);
+                    },
+
+                    'close door bedroom three': function () {
+                        PuertaHab2Open.setVisible(false)
+                        PuertaHab2Close.setVisible(true);
+                    },
+
+                    //Baño1
+
+                    //Baño1 luz
+                    'on bathroom one': function () {
+                        bombillobaño1on.setVisible(true);
+                    },
+
+                    'off bathroom one': function () {
+                        bombillobaño1on.setVisible(false)
+                        bombillobaño1off.setVisible(true);
+                    },
+                    //Baño1 puerta
+                    'open door bathroom one': function () {
+                        Puertabaño1open.setVisible(true);
+                    },
+
+                    'close door bathroom one': function () {
+                        Puertabaño1open.setVisible(false)
+                        Puertabaño1close.setVisible(true);
+                    },
+
+                    //Cocina
+
+                    //Cocina luz
+                    'on kitchen': function () {
+                        bombillacocinaon.setVisible(true);
+                    },
+
+                    'off kitchen': function () {
+                        bombillacocinaon.setVisible(false)
+                        bombillacocinaoff.setVisible(true);
+                    },
+                    //Cocina puerta
+                    'open door kitchen': function () {
+                        puertacocinaopen.setVisible(true);
+                    },
+
+                    'close door kitchen': function () {
+                        puertacocinaopen.setVisible(false)
+                        puertacocinaclose.setVisible(true);
+                    },
+
+                    //Lavadero
+
+                    //Lavadero luz
+                    'on laundry': function () {
+                        bombillalavaderoOn.setVisible(true);
+                    },
+
+                    'off laundry': function () {
+                        bombillalavaderoOn.setVisible(false)
+                        bombillalavaderoOff.setVisible(true);
+                    },
+                    //Lavadero puerta
+                    'open door laundry': function () {
+                        puertalavaderoOpen.setVisible(true);
+                    },
+
+                    'close door laundry': function () {
+                        puertalavaderoOpen.setVisible(false)
+                        puertalavaderoclose.setVisible(true);
                     }
+
+
+
+
+
                 };
 
                 if (annyang) {
@@ -62,25 +463,25 @@
             parent: 'phaser-example',
             width: 820,
             height: 600,
-            scene: Example           
+            scene: Example
         };
 
         const game = new Phaser.Game(config);
 
     </script>
 
- 
+
     <div class="container">
-       <div class="content">       
-        <button id="videoAction" onclick="toggleVideo()">Desactivar Video</button>
-        <button id="detectionAction" onclick="toggleDetecting()">Iniciar deteccion</button>
-       
-       </div>
-       <div class="aviso">
-        <h1>
-            Camara puerta principal
-        </h1>
-    </div> 
+        <div class="content">
+            <button id="videoAction" onclick="toggleVideo()">Desactivar Video</button>
+            <button id="detectionAction" onclick="toggleDetecting()">Iniciar deteccion</button>
+
+        </div>
+        <div class="aviso">
+            <h1>
+                Camara puerta principal
+            </h1>
+        </div>
     </div>
     <script src="app.js"></script>
     <div id="contenedor-video-canvas"></div>
