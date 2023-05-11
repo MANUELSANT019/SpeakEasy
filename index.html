@@ -26,16 +26,27 @@
             preload() {
                 this.load.atlas('soldier', 'assets/animations/soldier.png', 'assets/animations/soldier.json');                             
                 this.load.image('fg', 'assets/pics/plano.png');
-                this.load.image('verde', 'assets/animations/verde.png')
+                this.load.image('bombillo', 'assets/animations/on.png')
+                this.load.image('bombillo2', 'assets/animations/Off.png')
+
+
             }
 
             create() {
                 this.add.image(400, 300, 'fg');
-
+                const bombillo = this.add.image(670, 230, 'bombillo');
+                bombillo.setScale(0.33);
+                bombillo.setVisible(false); // Oculta la imagen inicialmente
+                const bombillo2 = this.add.image(670, 230, 'bombillo2');
+                bombillo2.setScale(0.33);
+                bombillo2.setVisible(false); // Oculta la imagen inicialmente
                
 
                 const commands = {
                   //aca van los comandos de voz
+                  'on bedroom': function () {
+                        bombillo.setVisible(true);
+                    }
                 };
 
                 if (annyang) {
