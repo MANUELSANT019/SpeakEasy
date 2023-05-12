@@ -327,7 +327,7 @@
 
                     'off bedroom one': function () {
                         bombillohab1on.setVisible(false)
-                        bombillohab1off.setVisible(true);
+                        
                     },
                     //Habitacion1 puerta
                     'open door bedroom one': function () {
@@ -348,7 +348,7 @@
 
                     'off bedroom two': function () {
                         bombillohab2on.setVisible(false)
-                        bombillohab2off.setVisible(true);
+                        
                     },
                     //Habitacion2 puerta
                     'open door bedroom two': function () {
@@ -369,7 +369,7 @@
 
                     'off bedroom three': function () {
                         bombillohab2on.setVisible(false)
-                        bombillohab2off.setVisible(true);
+                        
                     },
                     //Habitacion3 puerta
                     'open door bedroom three': function () {
@@ -390,7 +390,7 @@
 
                     'off bathroom one': function () {
                         bombillobaño1on.setVisible(false)
-                        bombillobaño1off.setVisible(true);
+                        
                     },
                     //Baño1 puerta
                     'open door bathroom one': function () {
@@ -398,6 +398,27 @@
                     },
 
                     'close door bathroom one': function () {
+                        Puertabaño1open.setVisible(false)
+                        Puertabaño1close.setVisible(true);
+                    },
+
+                    //Baño2
+
+                    //Baño2 luz
+                    'on bathroom two': function () {
+                        bombillobaño2on.setVisible(true);
+                    },
+
+                    'off bathroom two': function () {
+                        bombillobaño2on.setVisible(false)
+                        
+                    },
+                    //Baño2 puerta
+                    'open door bathroom two': function () {
+                        Puertabaño1open.setVisible(true);
+                    },
+
+                    'close door bathroom two': function () {
                         Puertabaño1open.setVisible(false)
                         Puertabaño1close.setVisible(true);
                     },
@@ -411,7 +432,7 @@
 
                     'off kitchen': function () {
                         bombillacocinaon.setVisible(false)
-                        bombillacocinaoff.setVisible(true);
+                        
                     },
                     //Cocina puerta
                     'open door kitchen': function () {
@@ -432,7 +453,7 @@
 
                     'off laundry': function () {
                         bombillalavaderoOn.setVisible(false)
-                        bombillalavaderoOff.setVisible(true);
+                        
                     },
                     //Lavadero puerta
                     'open door laundry': function () {
