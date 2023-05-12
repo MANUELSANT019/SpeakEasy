@@ -95,10 +95,10 @@ function toggleVideo() {
   if (!video) return;
   if (videoVisibility) {
     video.hide();
-    videoAction.innerText = 'Activar Video';
+    videoAction.innerText = 'Enable Video';
   } else {
     video.show();
-    videoAction.innerText = 'Desactivar Video';
+    videoAction.innerText = 'Disable video';
   }
   videoVisibility = !videoVisibility;
 }
@@ -107,9 +107,9 @@ function toggleDetecting() {
   if (!video || !detector) return;
   if (!detecting) {
     detect();
-    detectionAction.innerText = 'Parar...';
+    detectionAction.innerText = 'Stop...';
   } else {
-    detectionAction.innerText = 'Detectar Objetos';
+    detectionAction.innerText = 'Detect objects';
   }
   detecting = !detecting;
 }
