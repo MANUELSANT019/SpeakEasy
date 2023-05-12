@@ -21,8 +21,8 @@ body {
 }
 
 .header-logo p {
-	color: #5faa97;
-	font-size: 20px;
+	color: #333;
+	font-size: 18px;
 	margin: 0;
 }
 
@@ -38,7 +38,7 @@ p {
 
 /* Azul pastel */
 a {
-	color: #000000;
+	color: #90CAF9;
 }
 
 a:hover {
@@ -63,37 +63,24 @@ nav ul {
     text-decoration: none;
   }
 
+  .nom{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 30vh;
+       color: #5faa97;
+       font-size: 22px;
+  }
 
-.titulo{
-    display: inline-block;
-    padding: 10px;
-    margin-right: 10px;
-    color: #5faa97;
-}
-.cont{
-    position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 400px; /* ajusta el ancho según tus necesidades */
-  height: 50%; /* ajusta la altura según tus necesidades */
-  background-color: #C0DBEA;
-  color: #5faa97;
-}
-.sub {
+
+  .boton{
     background-color: #5faa97; /* Color azul pastel */
     border-radius: 20px; /* Bordes redondos */
     border: none; /* Quita el borde predeterminado */
-    padding: 10px 20px; /* Agrega un poco de espacio alrededor del texto */
+    padding: 8px 20px; /* Agrega un poco de espacio alrededor del texto */
     color: #fff; /* Texto en color blanco */
     font-size: 16px; /* Tamaño de fuente del botón */
   }
-
-  
-
-
-  
-
-  
   
   

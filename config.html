@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Voz</title>
+    <link rel="stylesheet" type="text/css" href="styleconfig.css">
+  </head>
+
+  <body>
+	<header class="header">
+		<div class="header-logo">
+           <h1>Configuración</h1> 
+    </div>
+   </header>
+   <nav>
+    <ul>
+       <li><a href="index2.html">Menú principal</a></li> 
+      <li><a href="index.html">Aplicación</a></li>
+      <li><a href="config.html">Configuración</a></li>
+    </ul>
+  </nav> 
+<div class="nom">
+<label for="nombre">Digite su nombre:</label>
+<input type="text" id="nombre" />
+<button class="boton" onclick="guardarNombre()">Guardar</button>
+</div>
+<script>
+const reconocimientoVoz = window.speechRecognition || window.webkitSpeechRecognition;
+const reconocimiento = new reconocimientoVoz();
+
+reconocimiento.onresult = function (event) {
+const voz = event.results[0][0].transcript;
+const mensaje = `Hola ${nombre}, espero que estés teniendo un buen día. El sistema se ha configurado correctamente.`;
+const sintetizador = new SpeechSynthesisUtterance(mensaje);
+window.speechSynthesis.speak(sintetizador);
+};
+
+function guardarNombre() {
+const nombre = document.getElementById("nombre").value;
+const mensaje = `Hola ${nombre}, espero que estés teniendo un buen día. El sistema se ha configurado correctamente.`;
+const sintetizador = new SpeechSynthesisUtterance(mensaje);
+window.speechSynthesis.speak(sintetizador);
+}
+
+function activarVoz() {
+reconocimiento.start();
+}
+</script>
+  </body>
+</html>
+
