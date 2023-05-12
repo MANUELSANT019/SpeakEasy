@@ -1,26 +1,50 @@
+.cabecera{
+  background-color: #FFF9C4;
+	padding: 20px; 
+}
+.principal{
+  background-color: #C0DBEA;
+}
+
 canvas {
-  border: 4px solid #BA90C6;
+  border: 4px solid #5faa97;
+}
+
+a:hover {
+	color: #FFF9C4;
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  background-color: #5faa97;
+  display: inline-block;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+nav li a {
+  color: #fff;
+  text-decoration: none;
 }
 
 #videoAction, #detectionAction{
- width: 250px;
+  width: 250px;
   height: 50px;
-  background: #BA90C6;
-  color: #2F0F5D;
+  background: #5faa97;
+  color: #fff;
   font-size: 18px;
   font-weight: bold;
-
+  margin-left: auto; /* Centra horizontalmente */
+  margin-right: auto; /* Centra horizontalmente */
+  display: block; /* Asegura que sean elementos de bloque */
+  border: 2px solid #155545;
 }
 
-.content {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 20px 0;
-  background-color: #F5F3C1;
-}
+
 
 #contenedor-video-canvas {
   display: flex;
@@ -41,11 +65,7 @@ body{
   background-color: #C0DBEA;
 }
 
-.aviso {
-  background-color: #F5F3C1;
-  border-radius: 5px;
-  padding: 10px;
-}
+
 
 .sub {
   background-color: #ffffcc; /* Color de fondo amarillo pastel */

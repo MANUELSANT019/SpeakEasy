@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SpeakEasy</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+	<header class="header">
+		<div class="header-logo">
+			<h1>EasySpeak</h1>
+			<p>Interfaz para controlar y ayudar a las personas con movilidad reducida a controlar su hogar por voz y obtener recomendaciones.</p>
+		</div>        
+	</header>
+    <nav>
+        <ul>
+           <li><a href="index2.html">Menú principal</a></li> 
+          <li><a href="index.html">Aplicación</a></li>
+          <li><a href="config.html">Configuración</a></li>
+        </ul>
+      </nav> 
+
+      <div class="cont">
+      <h1 class="titulo">Haz una pregunta</h1>
+      <form id="questionForm">
+          <label class="preg" for="question">Pregunta:</label>
+          <input class="entrada" type="text" id="question" name="question">
+          <button class="sub" type="submit">ENVIAR</button>
+      </form>
+      <h2>Respuesta:</h2>
+      <p id="answer"></p>
+      <script>
+          $("#questionForm").on("submit", function (event) {
+              event.preventDefault();
+      
+              var question = $("#question").val();
+              var requestData = {
+                  "model": "text-davinci-003",
+                  "prompt": question,
+                  "temperature": 0.8,
+                  "max_tokens": 100,
+                  "top_p": 1.0,
+                  "frequency_penalty": 0.5,
+                  "presence_penalty": 0.5,
+                  "stop": ["You:"]
+              };
+              $.ajax({
+                  url: "https://api.openai.com/v1/completions",
+                  type: "POST",
+                  dataType: "json",
+                  contentType: "application/json",
+                  headers: {
+                      "Authorization": "Bearer "
+                  },
+                  data: JSON.stringify(requestData),
+                  success: function (response) {
+                      $("#answer").text(response.choices[0].text);
+                  },
+                  error: function (xhr, textStatus, errorThrown) {
+                      console.error(textStatus);
+                  }
+              });
+          });
+      </script>  
+      </div>    
+</body>
+</html>
