@@ -3,6 +3,8 @@
 <head>
 	<title>SpeakEasy</title>
 	<link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
 </head>
 <body>
 	<header class="header">
@@ -34,14 +36,14 @@
       
               var question = $("#question").val();
               var requestData = {
-                  "model": "text-davinci-003",
+                  "model": "text-curie-001",
                   "prompt": question,
                   "temperature": 0.8,
-                  "max_tokens": 100,
+                  "max_tokens": 600,
                   "top_p": 1.0,
                   "frequency_penalty": 0.5,
                   "presence_penalty": 0.5,
-                  "stop": ["You:"]
+                  "stop": ["You"]
               };
               $.ajax({
                   url: "https://api.openai.com/v1/completions",
@@ -49,7 +51,7 @@
                   dataType: "json",
                   contentType: "application/json",
                   headers: {
-                      "Authorization": "Bearer "
+                      "Authorization": "Bearer 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"
                   },
                   data: JSON.stringify(requestData),
                   success: function (response) {
