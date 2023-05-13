@@ -30,15 +30,17 @@ const reconocimiento = new reconocimientoVoz();
 
 reconocimiento.onresult = function (event) {
 const voz = event.results[0][0].transcript;
-const mensaje = `Hola ${nombre}, espero que estés teniendo un buen día. El sistema se ha configurado correctamente.`;
+const mensaje = `Hello ${nombre},  I hope you are having a good day. the system has been configured correctly.`;
 const sintetizador = new SpeechSynthesisUtterance(mensaje);
+sintetizador.lang = 'en-US';
 window.speechSynthesis.speak(sintetizador);
 };
 
 function guardarNombre() {
 const nombre = document.getElementById("nombre").value;
-const mensaje = `Hola ${nombre}, espero que estés teniendo un buen día. El sistema se ha configurado correctamente.`;
+const mensaje = `Hello ${nombre}, I hope you are having a good day. the system has been configured correctly.`;
 const sintetizador = new SpeechSynthesisUtterance(mensaje);
+sintetizador.lang = 'en-US';
 window.speechSynthesis.speak(sintetizador);
 }
 
