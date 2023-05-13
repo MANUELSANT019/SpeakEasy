@@ -17,11 +17,11 @@
 <header class="cabecera">
     <nav>
         <ul>
-           <li><a href="index2.html">Main Menu</a></li> 
-          <li><a href="index.html">Aplication</a></li>
-          <li><a href="config.html">Configuration</a></li>
+            <li><a href="index2.html">Main Menu</a></li>
+            <li><a href="index.html">Aplication</a></li>
+            <li><a href="config.html">Configuration</a></li>
         </ul>
-      </nav>
+    </nav>
     <div class="container">
         <div class="content">
             <button id="videoAction" onclick="toggleVideo()">Disable video</button>
@@ -37,6 +37,7 @@
 </div>
 <script src="app.js"></script>
 <div id="contenedor-video-canvas"></div>
+
 <body class="principal">
 
     <script>
@@ -205,6 +206,39 @@
 
 
 
+                //Sala
+
+                //Sala  luz
+                const bombillosalaon = this.add.image(150, 300, 'bombillo');
+                bombillosalaon.setScale(0.22);
+                bombillosalaon.setVisible(false); // Oculta la imagen inicialmente
+
+                //Habitacion 1 puerta
+                const PuertaSalaopen = this.add.image(250, 300, 'Candadoverde');
+                PuertaSalaopen.setScale(0.11);
+                PuertaSalaopen.setVisible(false); // Oculta la imagen inicialmente
+                const PuertasalaClose = this.add.image(250, 300, 'Candadorojo');
+                PuertasalaClose.setScale(0.11);
+                PuertasalaClose.setVisible(false); // Oculta la imagen inicialmente
+
+
+
+
+                //ventana
+                const VentanaSalaOpen = this.add.image(250, 200, 'ventana');
+                VentanaSalaOpen.setScale(0.40);
+                VentanaSalaOpen.setVisible(false); // Oculta la imagen inicialmente
+
+
+                //Pasillo
+                const BombilloPasilloOn = this.add.image(540, 350, 'bombillo');
+                BombilloPasilloOn.setScale(0.20);
+                BombilloPasilloOn.setVisible(false); // Oculta la imagen inicialmente
+
+
+
+
+
 
                 //pruebas teclado
 
@@ -267,15 +301,15 @@
 
 
                 //Bombillo hab3
-              //  this.input.keyboard.on('keydown-P', function () {
+                //  this.input.keyboard.on('keydown-P', function () {
                 //    bombillohab3on.setVisible(!bombillohab3on.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'P'
-              //      bombillohab3off.setVisible(false); // Oculta el bombillo apagado al presionar la tecla 'P'
-               // });
+                //      bombillohab3off.setVisible(false); // Oculta el bombillo apagado al presionar la tecla 'P'
+                // });
 
-              //  this.input.keyboard.on('keydown-O', function () {
-               //     bombillohab3off.setVisible(!bombillohab3off.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'O'
+                //  this.input.keyboard.on('keydown-O', function () {
+                //     bombillohab3off.setVisible(!bombillohab3off.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'O'
                 //    bombillohab3on.setVisible(false); // Oculta el bombillo encendido al presionar la tecla 'O'
-               // });
+                // });
 
                 // Puerta hab3
                 // this.input.keyboard.on('keydown-I', function () {
@@ -319,31 +353,31 @@
 
 
                 //Cocina luz
-                this.input.keyboard.on('keydown-P', function () {
-                    bombillacocinaon.setVisible(!bombillacocinaon.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'P'
-                    bombillacocinaoff.setVisible(false); // Oculta el bombillo apagado al presionar la tecla 'P'
-                });
+                //  this.input.keyboard.on('keydown-P', function () {
+                //     bombillacocinaon.setVisible(!bombillacocinaon.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'P'
+                //     bombillacocinaoff.setVisible(false); // Oculta el bombillo apagado al presionar la tecla 'P'
+                // });
 
-                this.input.keyboard.on('keydown-O', function () {
-                    bombillacocinaoff.setVisible(!bombillacocinaoff.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'O'
-                    bombillacocinaon.setVisible(false); // Oculta el bombillo encendido al presionar la tecla 'O'
-                });
+                // this.input.keyboard.on('keydown-O', function () {
+                //     bombillacocinaoff.setVisible(!bombillacocinaoff.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'O'
+                //    bombillacocinaon.setVisible(false); // Oculta el bombillo encendido al presionar la tecla 'O'
+                // });
 
                 // Puerta cocina
-                 this.input.keyboard.on('keydown-I', function () {
-                     puertacocinaopen.setVisible(!puertacocinaopen.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'I'
-                     puertacocinaclose.setVisible(false); // Oculta el candado rojo al presionar la tecla 'I'
-                 });
+                // this.input.keyboard.on('keydown-I', function () {
+                //     puertacocinaopen.setVisible(!puertacocinaopen.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'I'
+                //     puertacocinaclose.setVisible(false); // Oculta el candado rojo al presionar la tecla 'I'
+                // });
 
-                 this.input.keyboard.on('keydown-U', function () {
-                     puertacocinaclose.setVisible(!puertacocinaclose.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'U'
-                   puertacocinaopen.setVisible(false); // Oculta el candado verde al presionar la tecla 'U'
-                   });
+                // this.input.keyboard.on('keydown-U', function () {
+                //     puertacocinaclose.setVisible(!puertacocinaclose.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'U'
+                //   puertacocinaopen.setVisible(false); // Oculta el candado verde al presionar la tecla 'U'
+                //  });
 
-                   this.input.keyboard.on('keydown-V', function () {
-                    VentanaCocinaOpen.setVisible(!VentanaCocinaOpen.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'U'
-                    
-                });
+                //  this.input.keyboard.on('keydown-V', function () {
+                //  VentanaCocinaOpen.setVisible(!VentanaCocinaOpen.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'U'
+
+                // });
 
 
 
@@ -377,6 +411,39 @@
                 //   });
 
 
+                //Sala
+
+                this.input.keyboard.on('keydown-P', function () {
+                    bombillosalaon.setVisible(!bombillosalaon.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'P'
+
+                });
+
+
+
+                // Puerta sala
+                this.input.keyboard.on('keydown-I', function () {
+                    PuertaSalaopen.setVisible(!PuertaSalaopen.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'I'
+                    PuertasalaClose.setVisible(false); // Oculta el candado rojo al presionar la tecla 'I'
+                });
+
+                this.input.keyboard.on('keydown-U', function () {
+                    PuertasalaClose.setVisible(!PuertasalaClose.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'U'
+                    PuertaSalaopen.setVisible(false); // Oculta el candado verde al presionar la tecla 'U'
+                });
+
+
+
+                //luz
+                this.input.keyboard.on('keydown-V', function () {
+                    VentanaSalaOpen.setVisible(!VentanaSalaOpen.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'U'
+
+                });
+
+                //Pasillo
+                this.input.keyboard.on('keydown-C', function () {
+                    BombilloPasilloOn.setVisible(!BombilloPasilloOn.visible); // Invierte la visibilidad de la imagen al presionar la tecla 'U'
+
+                });
 
 
 
@@ -550,9 +617,47 @@
                     'close door laundry': function () {
                         puertalavaderoOpen.setVisible(false)
                         puertalavaderoclose.setVisible(true);
+                    },
+
+                    //Sala
+                    'on living room': function () {
+                        bombillosalaon.setVisible(true);
+                    },
+
+                    'off living room': function () {
+                        bombillosalaon.setVisible(false)
+
+                    },
+                    //sala puerta
+                    'open door living room': function () {
+                        PuertaSalaopen.setVisible(true);
+                    },
+
+                    'close door living room': function () {
+                        PuertaSalaopen.setVisible(false)
+
+                        //sala ventana
+                    },
+                    'open window living room': function () {
+                        VentanaSalaOpen.setVisible(true);
+                    },
+
+                    'close window living room': function () {
+                        VentanaSalaOpen.setVisible(false)
+
+                    },
+
+
+                    //pasillo luz 
+
+                    'on hall': function () {
+                        BombilloPasilloOn.setVisible(true);
+                    },
+
+                    'off hall': function () {
+                        BombilloPasilloOn.setVisible(false)
+
                     }
-
-
 
 
 
@@ -580,4 +685,5 @@
 
 
 </body>
+
 </html>
