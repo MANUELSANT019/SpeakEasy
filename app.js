@@ -54,12 +54,16 @@ function onDetected(error, results) {
    
 console.log(detections[0].confidence);
 
-if(detections[0].confidence>0.7){
+
+for(let i = 0; i < detections.length; i++){
+if(detections[i].label === 'person'){
   console.log("Usted es una persona");
-  const msg = new SpeechSynthesisUtterance("Hay alguien en la puerta");
+  const msg = new SpeechSynthesisUtterance("there is a person at the door");
   window.speechSynthesis.speak(msg);
-}else{
-  console.log("no estoy seguro de que sea una persona");
+} else if(detections[i].label === 'dog'){
+  const msg = new SpeechSynthesisUtterance("there is a dog at the door");
+  window.speechSynthesis.speak(msg);
+}
 }
 
 //if(detections[0].label=="person"){
