@@ -14,9 +14,9 @@
    </header>
    <nav>
     <ul>
-       <li><a href="index2.html">Main menu</a></li> 
-      <li><a href="index.html">Aplication</a></li>
-      <li><a href="config.html">Configuration</a></li>
+       <li><a href="config.html">Configuration</a></li> 
+      <li><a href="index2.html">Menu</a></li>
+      <li><a href="index.html">aplicacion</a></li>
     </ul>
   </nav> 
 <div class="nom">
@@ -48,6 +48,73 @@ function activarVoz() {
 reconocimiento.start();
 }
 </script>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Activar cámara y probar micrófono</title>
+  </head>
+  <body>
+    <video id="video" autoplay></video>
+    <br>
+    <button id="startCamera">Activar cámara</button>
+    <button id="stopCamera">Desactivar cámara</button>
+    <button id="testMicrophone">Probar micrófono</button>
+    <script>
+      const startCameraButton = document.getElementById('startCamera');
+      const stopCameraButton = document.getElementById('stopCamera');
+      const testMicrophoneButton = document.getElementById('testMicrophone');
+      const video = document.getElementById('video');
+      let mediaStream = null;
+      const constraints = { video: true };
+
+      function startCamera() {
+        navigator.mediaDevices.getUserMedia(constraints)
+          .then(stream => {
+            video.srcObject = stream;
+            mediaStream = stream;
+          })
+          .catch(error => console.log(error));
+      }
+
+      function stopCamera() {
+        if (mediaStream) {
+          mediaStream.getTracks().forEach(track => {
+            track.stop();
+          });
+          mediaStream = null;
+        }
+      }
+
+      function testMicrophone() {
+        navigator.mediaDevices.getUserMedia({ audio: true })
+          .then(stream => {
+            const audioContext = new AudioContext();
+            const source = audioContext.createMediaStreamSource(stream);
+            const analyser = audioContext.createAnalyser();
+            source.connect(analyser);
+            analyser.fftSize = 2048;
+            const bufferLength = analyser.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
+            analyser.getByteTimeDomainData(dataArray);
+            if (dataArray.some(value => value !== 128)) {
+              console.log('El micrófono está sonando');
+            } else {
+              console.log('El micrófono no está sonando');
+            }
+            stream.getTracks().forEach(track => track.stop());
+          })
+          .catch(error => console.log(error));
+      }
+
+      startCameraButton.addEventListener('click', startCamera);
+      stopCameraButton.addEventListener('click', stopCamera);
+      testMicrophoneButton.addEventListener('click', testMicrophone);
+    </script>
+  </body>
+</html>
+
   </body>
 </html>
 
