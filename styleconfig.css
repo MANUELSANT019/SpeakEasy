@@ -4,6 +4,7 @@ body {
 	font-family: Arial, sans-serif;
 }
 
+
 .header {
 	background-color: #FFF9C4;
 	padding: 20px;
@@ -82,5 +83,16 @@ nav ul {
     color: #fff; /* Texto en color blanco */
     font-size: 16px; /* Tamaño de fuente del botón */
   }
+
+
+  button {
+    background-color: #5faa97;
+    border-radius: 20px;
+    border: none;
+    padding: 8px 20px;
+    color: #fff;
+    font-size: 16px;
+  }
+  
   
   

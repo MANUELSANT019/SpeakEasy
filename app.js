@@ -3,6 +3,8 @@ let detector = null;
 let detections = [];
 let videoVisibility = true;
 let detecting = false;
+let detectionInterval = 700; // Intervalo de detección en milisegundos
+let lastDetectionTime = 0; // Último tiempo de detección
 
 const videoAction = document.getElementById('videoAction');
 const detectionAction = document.getElementById('detectionAction');
@@ -17,20 +19,40 @@ function setup() {
   createCanvas(300, 300).parent('contenedor-video-canvas');
   video = createCapture(VIDEO);
   video.size(300, 300).parent('contenedor-video-canvas');
-
 }
 
 function draw() {
-  if (!video || !detecting) return;
-  image(video, 0, 0);
-  for (let i = 0; i < detections.length; i++) {
-    drawResult(detections[i]);
+  if (!video || !detecting || millis() - lastDetectionTime < detectionInterval) {
+    return;
   }
+
+  image(video, 0, 0);
+
+  if (!detecting) {
+    return;
+  }
+
+  detector.detect(video, onDetected);
+  lastDetectionTime = millis();
 }
 
-function drawResult(object) {
-  boundingBox(object);
-  drawLabel(object);
+function onDetected(error, results) {
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  detections = results;
+  processDetections();
+}
+
+function processDetections() {
+  for (let i = 0; i < detections.length; i++) {
+    const object = detections[i];
+    boundingBox(object);
+    drawLabel(object);
+    processDetectionLabel(object.label);
+  }
 }
 
 function boundingBox(object) {
@@ -39,6 +61,7 @@ function boundingBox(object) {
   noFill();
   rect(object.x, object.y, object.width, object.height);
 }
+
 function drawLabel(object) {
   noStroke();
   fill('white');
@@ -46,60 +69,29 @@ function drawLabel(object) {
   text(object.label, object.x + 15, object.y + 34);
 }
 
-function onDetected(error, results) {
-  if (error) {
-    console.error(error);
+function processDetectionLabel(label) {
+  let message = '';
+  
+  switch (label) {
+    case 'person':
+      message = 'there is a person at the door';
+      break;
+    case 'dog':
+      message = 'there is a dog at the door';
+      break;
+    case 'phone':
+      message = 'please remove the phone';
+      break;
+    default:
+      // Agrega más casos según tus necesidades
+      break;
   }
-  detections = results;
-   
-console.log(detections[0]);
-
-
-for(let i = 0; i < detections.length; i++){
-if(detections[i].label === 'person'){
-  console.log("Usted es una persona");
-  const msg = new SpeechSynthesisUtterance("there is a person at the door");
-  msg.lang = 'en-US';
-  window.speechSynthesis.speak(msg);
-} else if(detections[i].label === 'dog'){
-  const msg = new SpeechSynthesisUtterance("there is a dog at the door");
-  msg.lang = 'en-US';
-  window.speechSynthesis.speak(msg);
-} else if(detections[i].label === 'phone'){
-  console.log("Hay un teléfono en la imagen");
-  const msg = new SpeechSynthesisUtterance("please remove the phone");
-  msg.lang = 'en-US';
-  window.speechSynthesis.speak(msg);
-}
-}
-
-//if(detections[0].label=="person"){
-  //console.log("detecto una persona");
-//}
-
-
-
-
-
-
-
-//if(detections.length>=2){
-  //if(detections.length.label=="person"){
-    //console.log("Examen anulado");
-  //}
-   
-//}
-
-
-
-
-  if (detecting) {
-    detect();
+  
+  if (message) {
+    const msg = new SpeechSynthesisUtterance(message);
+    msg.lang = 'en-US';
+    window.speechSynthesis.speak(msg);
   }
-}
-
-function detect() {
-  detector.detect(video, onDetected);
 }
 
 function toggleVideo() {
@@ -116,11 +108,17 @@ function toggleVideo() {
 
 function toggleDetecting() {
   if (!video || !detector) return;
-  if (!detecting) {
+  detecting = !detecting;
+  if (detecting) {
     detect();
     detectionAction.innerText = 'Stop...';
   } else {
     detectionAction.innerText = 'Detect objects';
   }
-  detecting = !detecting;
 }
+
+function detect() {
+  detector.detect(video, onDetected);
+  lastDetectionTime = millis();
+}
+
