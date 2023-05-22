@@ -17,7 +17,7 @@
 <header class="cabecera">
     <nav>
         <ul>
-            <li><a href="config.html">Configuration</a></li> 
+            <li><a href="config.html">Configuration</a></li>
             <li><a href="index2.html">Menu</a></li>
             <li><a href="index.html">aplicacion</a></li>
         </ul>
@@ -656,7 +656,181 @@
                     'off hall': function () {
                         BombilloPasilloOn.setVisible(false)
 
-                    }
+                    },
+
+                    //Comandos generales
+
+                    'open all doors': function () {
+                        PuertaHab1Open.setVisible(true);
+                        PuertaHab2Open.setVisible(true);
+                        PuertaHab3Open.setVisible(true);
+                        Puertabaño1open.setVisible(true);
+                        Puertabaño2open.setVisible(true);
+                        puertacocinaopen.setVisible(true);
+                        puertalavaderoOpen.setVisible(true);
+                        PuertaSalaopen.setVisible(true);
+                        
+                    },
+
+                    'close all doors': function () {
+                        PuertaHab1Close.setVisible(true);
+                        PuertaHab2Close.setVisible(true);
+                        PuertaHab3Close.setVisible(true);
+                        Puertabaño1close.setVisible(true);
+                        Puertabaño2close.setVisible(true);
+                        puertacocinaclose.setVisible(true);
+                        puertalavaderoclose.setVisible(true);
+                        PuertasalaClose.setVisible(true);
+
+                    },
+
+                    'open all windows': function () {
+                        VentanaHab1Open.setVisible(true);
+                        VentanaHab2Open.setVisible(true);
+                        VentanaHab3Open.setVisible(true);
+                        VentanaCocinaOpen.setVisible(true);
+                        VentanaSalaOpen.setVisible(true);
+                        
+                        
+                    },
+
+                    'close all windows': function () {
+                        VentanaHab1Open.setVisible(false);
+                        VentanaHab2Open.setVisible(false);
+                        VentanaHab3Open.setVisible(false);
+                        VentanaCocinaOpen.setVisible(false);
+                        VentanaSalaOpen.setVisible(false);
+
+                    },
+
+
+                    'turn on all the lights': function () {
+                        bombillohab1on.setVisible(true);
+                        bombillohab2on.setVisible(true);
+                        bombillohab3on.setVisible(true);
+                        bombillobaño1on.setVisible(true);
+                        bombillobaño2on.setVisible(true);
+                        bombillacocinaon.setVisible(true);
+                        bombillalavaderoOn.setVisible(true);
+                        bombillosalaon.setVisible(true);
+                        BombilloPasilloOn.setVisible(true);
+
+                    },
+
+                    'turn off all the lights': function () {
+                       bombillohab1on.setVisible(false);
+                        bombillohab2on.setVisible(false);
+                        bombillohab3on.setVisible(false);
+                        bombillobaño1on.setVisible(false);
+                        bombillobaño2on.setVisible(false);
+                        bombillacocinaon.setVisible(false);
+                        bombillalavaderoOn.setVisible(false);
+                        bombillosalaon.setVisible(false);
+                        BombilloPasilloOn.setVisible(false);
+
+                    },
+
+                    'turn on the lights in all bedrooms': function () {
+                        bombillohab1on.setVisible(true);
+                        bombillohab2on.setVisible(true);
+                        bombillohab3on.setVisible(true);
+                        
+
+                    },
+
+                    'turn off the lights in all bedrooms': function () {
+                       bombillohab1on.setVisible(false);
+                        bombillohab2on.setVisible(false);
+                        bombillohab3on.setVisible(false);
+                        
+
+                    },
+
+
+
+                    'turn on the lights in all bathrooms': function () {
+                        bombillobaño1on.setVisible(true);
+                        bombillobaño2on.setVisible(true);
+                        
+                        
+
+                    },
+
+                    'turn off the lights in all bathrooms': function () {
+                        bombillobaño1on.setVisible(false);
+                        bombillobaño2on.setVisible(false);
+
+
+                    }, 
+
+
+                    'Open and turn on everything in the house': function () {
+                        bombillohab1on.setVisible(true);
+                        bombillohab2on.setVisible(true);
+                        bombillohab3on.setVisible(true);
+                        bombillobaño1on.setVisible(true);
+                        bombillobaño2on.setVisible(true);
+                        bombillacocinaon.setVisible(true);
+                        bombillalavaderoOn.setVisible(true);
+                        bombillosalaon.setVisible(true);
+                        BombilloPasilloOn.setVisible(true);
+
+                        PuertaHab1Open.setVisible(true);
+                        PuertaHab2Open.setVisible(true);
+                        PuertaHab3Open.setVisible(true);
+                        Puertabaño1open.setVisible(true);
+                        Puertabaño2open.setVisible(true);
+                        puertacocinaopen.setVisible(true);
+                        puertalavaderoOpen.setVisible(true);
+                        PuertaSalaopen.setVisible(true);
+
+                        VentanaHab1Open.setVisible(true);
+                        VentanaHab2Open.setVisible(true);
+                        VentanaHab3Open.setVisible(true);
+                        VentanaCocinaOpen.setVisible(true);
+                        VentanaSalaOpen.setVisible(true);
+
+
+                    },
+
+                    'Close and turn off everything in the house': function () {
+                       bombillohab1on.setVisible(false);
+                        bombillohab2on.setVisible(false);
+                        bombillohab3on.setVisible(false);
+                        bombillobaño1on.setVisible(false);
+                        bombillobaño2on.setVisible(false);
+                        bombillacocinaon.setVisible(false);
+                        bombillalavaderoOn.setVisible(false);
+                        bombillosalaon.setVisible(false);
+                        BombilloPasilloOn.setVisible(false);
+
+                        PuertaHab1Close.setVisible(true);
+                        PuertaHab2Close.setVisible(true);
+                        PuertaHab3Close.setVisible(true);
+                        Puertabaño1close.setVisible(true);
+                        Puertabaño2close.setVisible(true);
+                        puertacocinaclose.setVisible(true);
+                        puertalavaderoclose.setVisible(true);
+                        PuertasalaClose.setVisible(true);
+
+                        VentanaHab1Open.setVisible(false);
+                        VentanaHab2Open.setVisible(false);
+                        VentanaHab3Open.setVisible(false);
+                        VentanaCocinaOpen.setVisible(false);
+                        VentanaSalaOpen.setVisible(false);
+
+                    },
+
+
+
+                    
+
+
+
+                    
+
+
+
 
 
 
