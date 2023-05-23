@@ -1,68 +1,118 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>SpeakEasy</title>
-	<link rel="stylesheet" type="text/css" href="styles.css">
+    <title>SpeakEasy</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <style>
+        .button-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .button-container button {
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body>
-	<header class="header">
-		<div class="header-logo">
-			<h1>EasySpeak</h1>
-			<p>Interface to control and help people with reduced mobility to control their home by voice and get recommendations.</p>
-		</div>        
-	</header>
+    <header class="header">
+        <div class="header-logo">
+            <h1>EasySpeak</h1>
+            <p>Interface to control and help people with reduced mobility to control their home by voice and get recommendations.</p>
+        </div>        
+    </header>
     <nav>
         <ul>
             <li><a href="config.html">Configuration</a></li> 
             <li><a href="index2.html">Menu</a></li>
             <li><a href="index.html">aplicacion</a></li>
         </ul>
-      </nav> 
+    </nav> 
 
-      <div class="cont">
-      <h1 class="titulo">ask for any accessibility tips at home</h1>
-      <form id="questionForm">
-          <label class="preg" for="question">Question:</label>
-          <input class="entrada" type="text" id="question" name="question">
-          <button class="sub" type="submit">SEND</button>
-      </form>
-      <h2>Answer:</h2>
-      <p id="answer"></p>
-      <script>
-          $("#questionForm").on("submit", function (event) {
-              event.preventDefault();
-      
-              var question = $("#question").val();
-              var requestData = {
-                  "model": "text-curie-001",
-                  "prompt": question,
-                  "temperature": 0.8,
-                  "max_tokens": 600,
-                  "top_p": 1.0,
-                  "frequency_penalty": 0.5,
-                  "presence_penalty": 0.5,
-                  "stop": ["You"]
-              };
-              $.ajax({
-                  url: "https://api.openai.com/v1/completions",
-                  type: "POST",
-                  dataType: "json",
-                  contentType: "application/json",
-                  headers: {
-                      "Authorization": "Bearer "
-                  },
-                  data: JSON.stringify(requestData),
-                  success: function (response) {
-                      $("#answer").text(response.choices[0].text);
-                  },
-                  error: function (xhr, textStatus, errorThrown) {
-                      console.error(textStatus);
-                  }
-              });
-          });
-      </script>  
-      </div>    
+    <div class="cont">
+        <h1 class="titulo">Ask for any accessibility tips at home</h1>
+        <form id="questionForm">
+            <label class="preg" for="question">Question:</label>
+            <input class="entrada" type="text" id="question" name="question">
+            <div class="button-container">
+                <button class="sub" type="submit">SEND</button>
+                <button id="voiceButton">Encender Microfono</button>
+            </div>
+        </form>
+        <h2>Answer:</h2>
+        <p id="answer"></p>
+        <script>
+            var recognition;
+            var recognizing = false;
+
+            function initRecognition() {
+                recognition = new webkitSpeechRecognition();
+                recognition.continuous = true;
+                recognition.interimResults = false;
+
+                recognition.onstart = function () {
+                    recognizing = true;
+                    $('#voiceButton').text('Apagar microfono');
+                };
+
+                recognition.onend = function () {
+                    recognizing = false;
+                    $('#voiceButton').text('Start Recognition');
+                };
+
+                recognition.onresult = function (event) {
+                    var transcript = event.results[event.results.length - 1][0].transcript;
+                    $('#question').val(transcript);
+                };
+            }
+
+            $(document).ready(function () {
+                initRecognition();
+
+                $('#voiceButton').click(function () {
+                    if (recognizing) {
+                        recognition.stop();
+                    } else {
+                        recognition.start();
+                    }
+                });
+
+                $('#questionForm').on('submit', function (event) {
+                    event.preventDefault();
+
+                    var question = $('#question').val();
+                    var requestData = {
+                        "model": "text-curie-001",
+                        "prompt": question,
+                        "temperature": 0.8,
+                        "max_tokens": 600,
+                        "top_p": 1.0,
+                        "frequency_penalty": 0.5,
+                        "presence_penalty": 0.5,
+                        "stop": ["You"]
+                    };
+
+                    $.ajax({
+                        url: "https://api.openai.com/v1/completions",
+                        type: "POST",
+                        dataType: "json",
+                        contentType: "application/json",
+                        headers: {
+                            "Authorization": "Bearer "
+                        },
+                        data: JSON.stringify(requestData),
+                        success: function (response) {
+                            $("#answer").text(response.choices[0].text);
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            console.error(textStatus);
+                        }
+                    });
+                });
+            });
+        </script>
+    </div>    
 </body>
 </html>
