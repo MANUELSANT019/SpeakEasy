@@ -3,26 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <title>Voz</title>
-    <link rel="stylesheet" type="text/css" href="styleconfig.css">
+    <link rel="stylesheet" href="generalStyles.css">
+    <link rel="stylesheet" href="styleconfig.css">
   </head>
 
   <body>
 	<header class="header">
-		<div class="header-logo">
-           <h1>Configuration</h1> 
-    </div>
+
    </header>
    <nav>
-    <ul>
-       <li><a href="config.html">Configuration</a></li> 
-      <li><a href="index2.html">Menu</a></li>
-      <li><a href="index.html">aplicacion</a></li>
-    </ul>
-  </nav> 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="config.html">Configuration</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index2.html">Voice and chat assistant</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Application</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 <div class="nom">
-<label for="nombre">enter your name:</label>
+<label form="nombre" class="col-sm-2 col-form-label"><h4>Enter your name</h4></label>
 <input type="text" id="nombre" />
-<button class="boton" onclick="guardarNombre()">SAVE</button>
+<button class="btn btn-primary" onclick="guardarNombre()">SAVE</button>
 </div>
 <script>
 const reconocimientoVoz = window.speechRecognition || window.webkitSpeechRecognition;
@@ -61,11 +72,12 @@ reconocimiento.start();
     </style>
   </head>
   <body>
+    <div class="centrar">
     <video id="video" autoplay></video>
     <br>
-    <button id="startCamera">Activar cámara</button>
-    <button id="stopCamera">Desactivar cámara</button>
-    <button id="testMicrophone">Probar micrófono</button>
+    <button id="startCamera" class="btn btn-secondary">Test camera</button>
+    <button id="stopCamera" class="btn btn-secondary">Turn off camera</button>
+    <button id="testMicrophone" class="btn btn-secondary">Probar micrófono</button>
     <script>
       const startCameraButton = document.getElementById('startCamera');
       const stopCameraButton = document.getElementById('stopCamera');
@@ -100,7 +112,7 @@ reconocimiento.start();
     </script>
   </body>
 </html>
-
+</div>
 
   </body>
 </html>

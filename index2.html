@@ -2,7 +2,8 @@
 <html>
 <head>
     <title>SpeakEasy</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="generalStyles.css">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
     <style>
@@ -18,27 +19,36 @@
 </head>
 <body>
     <header class="header">
-        <div class="header-logo">
-            <h1>EasySpeak</h1>
-            <p>Interface to control and help people with reduced mobility to control their home by voice and get recommendations.</p>
-        </div>        
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="config.html">Configuration</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="index2.html">Voice and chat assistant</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="index.html">Application</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>  
+        <nav>    
     </header>
-    <nav>
-        <ul>
-            <li><a href="config.html">Configuration</a></li> 
-            <li><a href="index2.html">Menu</a></li>
-            <li><a href="index.html">aplicacion</a></li>
-        </ul>
-    </nav> 
+
 
     <div class="cont">
-        <h1 class="titulo">Ask for any accessibility tips at home</h1>
+        <h1 id="textoPrincipal" class="text-secondary">Ask for any accessibility tips at home</h1>
         <form id="questionForm">
-            <label class="preg" for="question">Question:</label>
+            <label for="question"><h3 >Question:</h3></label>
             <input class="entrada" type="text" id="question" name="question">
             <div class="button-container">
-                <button class="sub" type="submit">SEND</button>
-                <button id="voiceButton">Encender Microfono</button>
+                <button class="btn btn-secondary" type="submit">SEND</button>
+                <button id="voiceButton" class="btn btn-secondary">Turn on microphone</button>
             </div>
         </form>
         <h2>Answer:</h2>
@@ -86,7 +96,7 @@
                     var requestData = {
                         "model": "text-curie-001",
                         "prompt": question,
-                        "temperature": 0.8,
+                        "temperature": 0.6,
                         "max_tokens": 600,
                         "top_p": 1.0,
                         "frequency_penalty": 0.5,
@@ -100,7 +110,7 @@
                         dataType: "json",
                         contentType: "application/json",
                         headers: {
-                            "Authorization": "Bearer "
+                            "Authorization": "Bearer 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"
                         },
                         data: JSON.stringify(requestData),
                         success: function (response) {
